@@ -38,16 +38,27 @@ def get_min_distance(lat_origin, long_origin, bici_points):
 
 Results are stored in df_embajadas, including embassy type, address, and the nearest BiciMAD and BiciPark stations.
 
-df_embajadas['Type of Place'] = df_embajadas['title'].apply(lambda embajada_name: get_type_of_place(embajada_name))
-df_embajadas = df_embajadas[df_embajadas.columns[df_embajadas.columns.isin(['title', 'Type of Place', 'address', 'Bicipark_station_name', 'Bicipark_station_address', 'Bicimad_station_name', 'Bicimad_station_address' ])]] 
-df_embajadas = df_embajadas[['title', 'Type of Place', 'address', 'Bicipark_station_name', 'Bicipark_station_address', 'Bicimad_station_name', 'Bicimad_station_address' ]] 
-df_embajadas = df_embajadas.rename(columns={'title': 'Place of interest', 'address': 'Place address'})
 
 # Functions
 
 to_mercator(lat, long): Transforms latitude/longitude data in degrees to pseudo-mercator coordinates in meters.
 distance_meters(lat_start, long_start, lat_finish, long_finish): Returns the distance in meters between two latitude/longitude pairs.
 get_min_distance(lat_origin, long_origin, bici_points): Finds the closest station from a list of bike station coordinates.
+# Folder Structre
+└── project
+    ├── __trash__
+    ├── .gitignore
+    ├── requeriments.txt
+    ├── README.md
+    ├── main_script.py
+    ├── notebooks
+    │   ├── project1_dataframes.ipynb
+    ├── modules
+    │   ├── geo_calculations.py
+    │  
+    └── data
+        ├── bicimad_stations.csv
+        ├── bicipark_stations.csv
 
 # Additional Notes
 
