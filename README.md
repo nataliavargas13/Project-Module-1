@@ -40,15 +40,17 @@ Results are stored in df_embajadas, including embassy type, address, and the nea
 
 df_embajadas['Type of Place'] = df_embajadas['title'].apply(lambda embajada_name: get_type_of_place(embajada_name))
 df_embajadas = df_embajadas[df_embajadas.columns[df_embajadas.columns.isin(['title', 'Type of Place', 'address', 'Bicipark_station_name', 'Bicipark_station_address', 'Bicimad_station_name', 'Bicimad_station_address' ])]] 
-df_embajadas = df_embajadas[['title', 'Type of Place', 'address', 'Bicipark_station_name', 'Bicipark_station_address', 'Bicimad_station_name', 'Bicimad_station_address' ]] # reordenar columnas
+df_embajadas = df_embajadas[['title', 'Type of Place', 'address', 'Bicipark_station_name', 'Bicipark_station_address', 'Bicimad_station_name', 'Bicimad_station_address' ]] 
 df_embajadas = df_embajadas.rename(columns={'title': 'Place of interest', 'address': 'Place address'})
 
-#Functions
+# Functions
+
 to_mercator(lat, long): Transforms latitude/longitude data in degrees to pseudo-mercator coordinates in meters.
 distance_meters(lat_start, long_start, lat_finish, long_finish): Returns the distance in meters between two latitude/longitude pairs.
 get_min_distance(lat_origin, long_origin, bici_points): Finds the closest station from a list of bike station coordinates.
 
-#Additional Notes
+# Additional Notes
+
 - Ensure the required data files (bicimad_stations.csv, bicipark_stations.csv) are present in the specified locations.
 - The script fetches embassy/consulate data from a Madrid open data portal URL, so an internet connection is required.
 - The resulting DataFrame df_embajadas contains information about embassies/consulates, their types, addresses, and the closest BiciMAD and BiciPark stations.
